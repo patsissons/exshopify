@@ -1,5 +1,6 @@
 <script>
   import { page } from '$app/stores'
+
   const id = $page.url.searchParams.get('error')
 </script>
 
@@ -13,7 +14,7 @@
 <style lang="postcss">
   :global(html) {
     background-color: theme(colors.slate.700);
-    color: theme(textColor.slate.100)
+    color: theme(textColor.slate.100);
   }
 
   :global(body) {

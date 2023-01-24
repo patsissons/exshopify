@@ -1,8 +1,8 @@
-import { redirect } from '@sveltejs/kit';
-import {loadRedirect} from '$lib/server/redirect'
-import type { RequestEvent } from './$types';
+import { redirect } from '@sveltejs/kit'
+import { loadRedirect } from '$lib/server/redirect'
+import type { RequestEvent } from './$types'
 
-export async function load({params: {id}}: RequestEvent) {
+export async function load({ params: { id } }: RequestEvent) {
   const result = await loadRedirect(id)
 
   if (!result || !result.url) {

@@ -1,6 +1,6 @@
 import redirectsJson from 'data/redirects.json'
 
-export type  ID = string
+export type ID = string
 
 export interface Redirect {
   url: string
