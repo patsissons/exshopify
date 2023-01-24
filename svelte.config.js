@@ -11,8 +11,8 @@ const config = {
 		adapter: adapter(),
 		alias: {
 			'data/*': 'src/data/*',
-		}
-	}
+		},
+	},
 };
 
 export default config;
