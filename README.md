@@ -1,4 +1,10 @@
-# create-svelte
+# [exshopify.com](https://exshopify.com/)
+
+A site for departing shopifolk to create a redirect link based on their domain email address. e.g., `john.doe@shopify.com` becomes `exshopify.com/john.doe`
+
+---
+
+## create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
