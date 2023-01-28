@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  background-color: theme(colors.slate.700);
+  color: theme(textColor.slate.100);
+}
+
+body.staging {
+  background: repeating-linear-gradient(
+    45deg,
+    theme(colors.slate.500),
+    theme(colors.slate.500) 10px,
+    theme(colors.slate.600) 10px,
+    theme(colors.slate.600) 20px
+  );
+}

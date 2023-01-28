@@ -1,1 +1,1 @@
-["gmail.com", "shopify.com"]
+[{ "domain": "gmail.com", "test": true }, { "domain": "shopify.com" }]

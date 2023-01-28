@@ -1,14 +1,14 @@
-import { verifyEmail } from '$lib/services/auth'
 import { verify, type JwtPayload } from 'jsonwebtoken'
+import { PUBLIC_KEY } from '$lib/config/env'
+import { verifyEmail } from '$lib/services/auth'
+import { log } from '$lib/utils/logging'
 
-const publicKey = import.meta.env.VITE_PUBLIC_KEY
-
-export function verifyToken(token: string) {
-  if (!publicKey) {
+export function verifyToken(token: string, staging: boolean) {
+  if (!PUBLIC_KEY) {
     throw new Error('unable to verify token')
   }
 
-  const details = verify(token, publicKey)
+  const details = verify(token, PUBLIC_KEY)
   if (typeof details === 'string') {
     throw new Error('invalid token verification format')
   }
@@ -17,11 +17,11 @@ export function verifyToken(token: string) {
     throw new Error('invalid token verification')
   }
 
-  const id = verifyEmail(details.email)
+  const { id, domain } = verifyEmail(details.email, staging)
 
-  console.log('D', { id })
+  log('verifyToken', { id })
 
-  return id
+  return { id, domain }
 }
 
 function hasEmail(value: JwtPayload): value is { email: string } {

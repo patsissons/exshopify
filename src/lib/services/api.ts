@@ -1,15 +1,20 @@
+import { log } from '$lib/utils/logging'
+
 export const api = {
-  auth(token: string) {
-    return request('auth', { token })
+  login(token: string) {
+    return request('auth/login', { token })
+  },
+  logout() {
+    return request('auth/logout')
   },
   update(url: string) {
     return request('update', { url })
   },
 }
 
-type Action = 'auth' | 'update'
+type Action = 'auth/login' | 'auth/logout' | 'update'
 
-async function request(action: Action, body: unknown) {
+async function request(action: Action, body?: unknown) {
   const path = `/api/${action}`
 
   try {
@@ -18,14 +23,20 @@ async function request(action: Action, body: unknown) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(body),
+      body: body ? JSON.stringify(body) : undefined,
     })
 
+    if (!response.ok) {
+      const text = await response.text()
+      throw new Error(text)
+    }
+
     const data = await response.json()
-    console.log('D', { path, body, data })
+    log('request', { path, body, data })
 
     return data
   } catch (error) {
-    console.log('E', { path, body, error })
+    log('request', { path, body, error }, 'E')
+    throw error
   }
 }

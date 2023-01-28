@@ -1,6 +1,26 @@
 # [exshopify.com](https://exshopify.com/)
 
-A site for departing shopifolk to create a redirect link based on their domain email address. e.g., `john.doe@shopify.com` becomes `exshopify.com/john.doe`
+A site for departing shopifolk to create a forwarding link based on their domain email address. e.g., `john.doe@shopify.com` becomes `exshopify.com/john.doe`
+
+## supabase
+
+- View your [API settings page](https://app.supabase.com/project/koindbqxigdpttnbsiyi/settings/api)
+- Generate a [new local access token](https://app.supabase.com/account/tokens)
+
+### First time setup
+
+```sh
+# local access token in 1pass
+npx supabase login
+npx supabase init
+npx supabase link --project-ref koindbqxigdpttnbsiyi
+```
+
+### Type generation
+
+```sh
+npx supabase gen types typescript --linked > src/lib/types/supabase.ts
+```
 
 ---
 
