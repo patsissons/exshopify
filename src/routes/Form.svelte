@@ -66,9 +66,23 @@
     </form>
   {:else}
     <p class="mt-4">
-      No data is collected other than your email address, only once you save a
-      forwarding link. Google authentication is only used to verify that you
-      control the email address.
+      Set up a permanent forwarding link for your coworkers to find after you
+      depart. Your forwarding link is derived from your email address. e.g., <tt
+        >john.doe@shopify.com</tt
+      >
+      becomes
+      <tt>exshopify.com/john.doe</tt>.
+    </p>
+    <p class="mt-4">
+      Use the QR code generator to create the perfect image to replace your
+      slack profile with. The bottom margin allows space for a few goodbye words
+      that will eventually become obstructed by the <i>deactivated</i> shade.
+    </p>
+    <p class="mt-4">
+      No data is collected other than your email address, and only once you save
+      a forwarding link. No forwarding link visit or any other metrics are
+      collected at all. Google authentication is used to verify that you control
+      the email address.
     </p>
   {/if}
 </Card>
