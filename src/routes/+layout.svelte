@@ -7,6 +7,7 @@
   import { auth } from '$lib/services/auth'
   import { errorReason } from '$lib/utils/error'
   import { log } from '$lib/utils/logging'
+  import { onMount } from 'svelte'
   import '../app.css'
   import type { PageData } from './$types'
 
@@ -42,14 +43,23 @@
       error = err
     }
   }
+
+  onMount(() => {
+    if (!staging) return
+
+    document.documentElement.className = 'staging'
+  })
 </script>
 
-<div class:staging>
+<div>
   <Page>
     <Topbar {urlContext} {verifiedEmail} {login} {logout} />
     {#if staging}
-      <div class="text-center mb-4">
-        <p class="text-yellow-500">⚠️ Staging Environment ⚠️</p>
+      <div class="text-center mb-4 text-yellow-500">
+        <p>⚠️ Staging Environment ⚠️</p>
+        <p>
+          Staging environemnt allows connections from <tt>gmail.com</tt> domains.
+        </p>
       </div>
     {/if}
     {#if invalidRedirect || error}
@@ -69,24 +79,5 @@
       </section>
     {/if}
     <slot />
-    {#if staging}
-      <section class="flex justify-center mt-4">
-        <p class="text-yellow-500">
-          Staging environemnt allows connections from <tt>gmail.com</tt> domains.
-        </p>
-      </section>
-    {/if}
   </Page>
 </div>
-
-<style lang="postcss">
-  .staging {
-    background: repeating-linear-gradient(
-      45deg,
-      theme(colors.slate.500),
-      theme(colors.slate.500) 10px,
-      theme(colors.slate.600) 10px,
-      theme(colors.slate.600) 20px
-    );
-  }
-</style>

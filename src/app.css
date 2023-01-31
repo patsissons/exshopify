@@ -7,12 +7,11 @@ html {
   color: theme(textColor.slate.100);
 }
 
-body.staging {
-  background: repeating-linear-gradient(
-    45deg,
-    theme(colors.slate.500),
-    theme(colors.slate.500) 10px,
-    theme(colors.slate.600) 10px,
-    theme(colors.slate.600) 20px
+html.staging {
+  background-attachment: fixed;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0 20px,
+    theme(colors.slate.600) 20px 40px
   );
 }

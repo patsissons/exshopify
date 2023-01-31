@@ -1,4 +1,4 @@
-<div class="container w-full">
+<div class="container w-full mb-4">
   {#if $$slots.header}
     <h5 class="header">
       <slot name="header" />
