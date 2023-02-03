@@ -14,8 +14,8 @@ export interface QROptions {
 export async function buildQRDataUrl(
   url: string,
   {
-    width = 300,
-    margin = 50,
+    width = 3000,
+    margin = width / 6,
     imageSrc,
     imageWidth = Math.floor(width / 4),
     imageMargin = Math.floor(width / 50),
@@ -74,8 +74,8 @@ export async function buildQRDataUrl(
   if (footer) {
     ctx.fillStyle = '#000'
     ctx.textAlign = 'center'
-    ctx.font = '36px sans-serif'
-    ctx.fillText(footer, layoutWidth / 2, layoutWidth - 10, layoutWidth)
+    ctx.font = `${Math.floor(width / 8)}px sans-serif`
+    ctx.fillText(footer, layoutWidth / 2, layoutWidth - width / 20, layoutWidth)
   }
 
   return layoutCanvas.toDataURL(type)

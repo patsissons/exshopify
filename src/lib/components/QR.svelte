@@ -10,7 +10,7 @@
   export let url: string
 
   let logo = '/favicon.png'
-  let footer = '👋 adios amgios 🍻'
+  let footer = '👋 adios amigos 🍻'
   let qrcodeSrc = ''
   let error: unknown
 
@@ -23,7 +23,7 @@
     'image/webp',
   ])
 
-  async function buildQR(width = 300, margin = 50, type = 'image/png') {
+  async function buildQR() {
     try {
       qrcodeSrc = await buildQRDataUrl(url, { imageSrc: logo, footer })
     } catch (err) {
